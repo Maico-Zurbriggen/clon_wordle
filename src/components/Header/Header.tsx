@@ -1,14 +1,14 @@
 import { useNavigate } from 'react-router-dom'
 import { AppRoutes } from '../../models';
-import './HeaderSettings.css'
+import './Header.css'
 
-export const HeaderSettings = () => {
+export const Header = ({ title }: { title: string }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="header-settings">
-      <div className='header-settings-child'>
-        <h1 className='header-settings-title'>Ajustes</h1>
+    <div className="header">
+      <div className='header-child'>
+        <h1 className='header-title'>{title}</h1>
       </div>
       <h1 className='close' onClick={() => navigate(AppRoutes.game)}>X</h1>
     </div>

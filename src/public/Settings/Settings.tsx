@@ -1,10 +1,10 @@
 import './Settings.css'
-import { HeaderSettings, WordLengthSelector } from '../../components'
+import { Header, WordLengthSelector } from '../../components'
 
 export const Settings = () => {
   return (
     <> 
-      <HeaderSettings />
+      <Header title='Ajustes'/>
       <WordLengthSelector />
     </>
   )

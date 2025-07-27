@@ -1,0 +1,1 @@
+export const arrayExampleWord = ['M', 'E', 'D', 'I', 'O'];

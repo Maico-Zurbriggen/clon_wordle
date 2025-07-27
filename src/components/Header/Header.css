@@ -1,4 +1,4 @@
-.header-settings {
+.header {
   width: 100%;
   max-width: 600px;
   display: flex;
@@ -11,13 +11,13 @@
   cursor: default;
 }
 
-.header-settings-child {
+.header-child {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.header-settings-title {
+.header-title {
   font-size: 20px;
 }
 

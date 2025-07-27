@@ -1,0 +1,38 @@
+.explanation-colors {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 10px;
+  background-color: var(--color-background-keyboard);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.explanation-colors-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.explanation-colors-letter {
+  width: 20px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: var(--color-incorrect-letter);
+  color: var(--color-white);
+  border-radius: 5px;
+}
+
+.explanation-colors-letter--correct {
+  background-color: var(--color-correct-letter);
+}
+
+.explanation-colors-letter--present {
+  background-color: var(--color-present-letter);
+}

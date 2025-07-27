@@ -24,7 +24,7 @@ export const Navegation = () => {
         <li className='navegation-child-item' onClick={() => navigate(AppRoutes.settings)}>
           <IoSettingsSharp size={20} />
         </li>
-        <li className='navegation-child-item'>
+        <li className='navegation-child-item' onClick={() => navigate(AppRoutes.help)}>
           <BiHelpCircle size={20} />
         </li>
       </ul>
