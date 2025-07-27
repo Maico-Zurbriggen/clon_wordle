@@ -1,0 +1,1 @@
+export { arrayKeyboard } from './arrayKeyboard'

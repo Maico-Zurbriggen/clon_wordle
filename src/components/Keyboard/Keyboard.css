@@ -1,0 +1,42 @@
+.keyboard {
+  max-height: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.cell-keyboard {
+  height: 40px;
+  flex: 1;
+  min-width: 30px;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: var(--color-background-keyboard);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  transition: background-color 0.3s ease;
+  color: var(--color-principal-text);
+}
+
+.cell-keyboard--special {
+  flex: 1.5;
+}
+
+.cell-keyboard:hover {
+  cursor: pointer;
+  background-color: var(--color-background-keyboard-hover);
+}
