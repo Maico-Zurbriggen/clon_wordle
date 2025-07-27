@@ -1,0 +1,31 @@
+.header-settings {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px;
+  background-color: var(--color-background-keyboard);
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: default;
+}
+
+.header-settings-child {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.header-settings-title {
+  font-size: 20px;
+}
+
+.close {
+  transition: color 0.3s ease-in-out;
+}
+
+.close:hover {
+  color: var(--color-principal-background);
+  cursor: pointer;
+}

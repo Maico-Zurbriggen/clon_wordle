@@ -6,6 +6,7 @@
   --color-background-keyboard: #e2e4e7;
   --color-background-keyboard-hover: #d3d6da;
   --color-principal-text: #4a5a6a;
+  --color-white: #fff;
 
   --font-principal: 'Roboto Mono', monospace;
 }
@@ -26,6 +27,10 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+h1, h2, h3 {
+  margin: 0;
 }
 
 li {
