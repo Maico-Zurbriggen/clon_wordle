@@ -1,14 +1,20 @@
 :root {
-  --color-principal-background: #1a1a;
-  --color-correct-letter: #6aaa64;
-  --color-present-letter: #c9b458;
-  --color-incorrect-letter: #787c7e;
-  --color-background-keyboard: #e2e4e7;
+  --color-font-principal: #393e4c;
+  --color-font-secondary: #a8b0be;
+  --color-font-keyboard: #46628a;
+  --color-background-keyboard: #dce1ed;
+  --color-background-nav: #ebedf2;
+  --color-background-nav-hover: #e6f3e6;
+  --color-font-nav-hover: #5aad5a;
+  --color-font-nav: #414a5e;
+  --color-background-title: #e5ecff;
+  --color-correct-letter: #79B850;
+  --color-present-letter: #F4C238;
+  --color-incorrect-letter: #A4AFC4;
   --color-background-keyboard-hover: #d3d6da;
-  --color-principal-text: #4a5a6a;
-  --color-white: #fff;
+  --color-white: #ffffff;
 
-  --font-principal: 'Roboto Mono', monospace;
+  --font-principal: 'Montserrat', sans-serif;
 }
 
 *, *::after, *::before {

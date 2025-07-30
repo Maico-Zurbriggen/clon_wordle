@@ -14,7 +14,7 @@ export const Board = () => {
       {board.map((row, rowIndex) => (
         <div className="row" key={rowIndex}>
           {row.map((cell, cellIndex) => (
-            <div className="cell" key={cellIndex}>
+            <div className="cell" key={cellIndex} id={`cell-${rowIndex}-${cellIndex}`}>
               {cell}
             </div>
           ))}

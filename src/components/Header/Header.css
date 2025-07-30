@@ -5,7 +5,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 5px 20px;
-  background-color: var(--color-background-keyboard);
+  background-color: var(--color-background-title);
   border-radius: 5px;
   margin-top: 10px;
   cursor: default;
@@ -26,6 +26,6 @@
 }
 
 .close:hover {
-  color: var(--color-principal-background);
+  color: var(--color-font-nav-hover);
   cursor: pointer;
 }

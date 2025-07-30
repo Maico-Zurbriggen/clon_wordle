@@ -1,0 +1,1 @@
+export { fetchWord } from './fetchWord';

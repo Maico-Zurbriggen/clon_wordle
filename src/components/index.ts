@@ -6,3 +6,4 @@ export { Header } from './Header/Header';
 export { WordLengthSelector } from './WordLengthSelector/WordLengthSelector';
 export { ExampleWord } from './ExampleWord/ExampleWord';
 export { ExplanationColors } from './ExplanationColors/ExplanationColors';
+export { WindowEnd } from './WindowEnd/WindowEnd';

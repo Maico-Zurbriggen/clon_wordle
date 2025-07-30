@@ -16,14 +16,15 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  background-color: var(--color-background-keyboard);
+  background-color: var(--color-background-nav);
   padding: 8px;
   border-radius: 5px;
   transition: color 0.3s ease;
 }
 
 .navegation-child-item:hover {
-  color: var(--color-principal-background);
+  color: var(--color-font-nav-hover);
+  background-color: var(--color-background-nav-hover);
   cursor: pointer;
 }
 

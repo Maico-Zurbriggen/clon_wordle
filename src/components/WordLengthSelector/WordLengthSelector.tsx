@@ -1,7 +1,8 @@
 import { arrayNumberOfLetters } from '../../constants';
 import { useDispatch, useSelector } from 'react-redux';
-import { setWordLength } from '../../store/gameSlice';
+import { setWordLength, setCurrentWord, setCurrentAttempt, setCurrentLetter, setWordAttempt } from '../../store/gameSlice';
 import type { RootState, AppDispatch } from '../../store';
+import { fetchWord } from '../../utils';
 import './WordLengthSelector.css'
 
 export const WordLengthSelector = () => {
@@ -9,9 +10,13 @@ export const WordLengthSelector = () => {
 
   const wordLength = useSelector((state: RootState) => state.game.wordLength);
 
-  const handleSetLength = (number: number) => {
+  const handleSetLength = async (number: number) => {
     dispatch(setWordLength(number));
     localStorage.setItem('wordLength', number.toString());
+    dispatch(setCurrentWord(await fetchWord()));
+    dispatch(setCurrentAttempt(0));
+    dispatch(setCurrentLetter(0));
+    dispatch(setWordAttempt(''));
   }
 
   return (
