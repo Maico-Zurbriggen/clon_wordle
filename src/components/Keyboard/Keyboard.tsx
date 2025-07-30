@@ -1,86 +1,81 @@
-import { arrayKeyboard, wordsAcepted } from '../../constants'
-import { useDispatch, useSelector } from 'react-redux';
-import type { AppDispatch, RootState } from '../../store';
-import { setCurrentAttempt, setCurrentLetter, setWordAttempt } from '../../store/gameSlice';
-import './Keyboard.css';
+import { arrayKeyboard } from "../../constants";
+import { useDispatch, useSelector } from "react-redux";
+import type { AppDispatch, RootState } from "../../store";
+import { clickLetter } from "../../utils";
+import { useEffect } from "react";
+import "./Keyboard.css";
 
-let updateWordAttempt: string = ''
-
-export const Keyboard = ({ modifyIsEnd, modifyIsWin }: { modifyIsEnd: (isEnd: boolean) => void, modifyIsWin: (isWin: boolean) => void }) => {
+export const Keyboard = ({
+  modifyIsEnd,
+  modifyIsWin,
+}: {
+  modifyIsEnd: (isEnd: boolean) => void;
+  modifyIsWin: (isWin: boolean) => void;
+}) => {
   const dispatch = useDispatch<AppDispatch>();
-  const { currentAttempt, currentLetter, currentWord, wordAttempt } = useSelector((state: RootState) => state.game);
+  const { currentAttempt, currentLetter, currentWord, wordAttempt } =
+    useSelector((state: RootState) => state.game);
 
-  const handleClickKey = (key: string) => {
-    if (key === 'Enter') {
-      console.log(wordAttempt);
-      console.log(wordsAcepted.includes(wordAttempt));
-      if (!wordsAcepted.includes(wordAttempt)) {
-        return;
+  useEffect(() => {
+    const handleKeyPress = (event: KeyboardEvent) => {
+      let tecla: string = event.key;
+      const currentKey: HTMLButtonElement | null = document.querySelector(`#${tecla}`);
+
+      if (tecla && tecla.toLowerCase() === "enter") {
+        tecla = "Enter";
       }
-      if (currentLetter !== currentWord.length) return;
-      if (currentAttempt === 5) modifyIsEnd(true);
 
-      dispatch(setCurrentAttempt(currentAttempt + 1));
-      dispatch(setCurrentLetter(0));
+      if (tecla && tecla.toLowerCase() === "backspace") {
+        tecla = "⌫";
+      }
 
-      currentWord.split('').forEach((letter, index) => {
-        const currentCell: HTMLElement | null = document.querySelector(`#cell-${currentAttempt}-${index}`)
-        const currentKey: HTMLButtonElement | null = document.querySelector(`#${currentCell?.textContent}`)
+      if (currentKey && currentKey.disabled) return;
 
-        if (currentCell && currentCell.textContent) {
-          if (currentCell.textContent === letter) {
-            currentCell.classList.add('cell--correct');
-          } else if (currentWord.includes(currentCell.textContent)) {
-            currentCell.classList.add('cell--present');
-          } else {
-            currentCell.classList.add('cell--incorrect');
-            if (currentKey) {
-              currentKey.classList.add('cell-keyboard--incorrect');
-              currentKey.disabled = true;
-            }
-          }
-        }
+      clickLetter({
+        key: tecla,
+        dispatch,
+        currentAttempt,
+        currentLetter,
+        currentWord,
+        wordAttempt,
+        modifyIsEnd,
+        modifyIsWin,
       })
+    };
 
-      if (wordAttempt === currentWord) {
-        modifyIsWin(true);
-        modifyIsEnd(true);
-      }
-
-      updateWordAttempt = '';
-      dispatch(setWordAttempt(updateWordAttempt));
-    } else if (key === '⌫') {
-      if (!currentLetter) return;
-      const currentCell = document.querySelector(`#cell-${currentAttempt}-${currentLetter - 1}`)
-      updateWordAttempt = wordAttempt.slice(0, -1);
-      if (currentCell) currentCell.textContent = '';
-      dispatch(setCurrentLetter(currentLetter - 1));
-      dispatch(setWordAttempt(updateWordAttempt));
-    } else {
-      if (currentLetter === currentWord.length) return;
-      const currentCell = document.querySelector(`#cell-${currentAttempt}-${currentLetter}`)
-      updateWordAttempt += key;
-      if (currentCell) currentCell.textContent = key;
-      dispatch(setCurrentLetter(currentLetter + 1));
-      dispatch(setWordAttempt(updateWordAttempt));
-    }
-  }
+    window.addEventListener("keydown", handleKeyPress);
+    return () => window.removeEventListener("keydown", handleKeyPress);
+  }, [currentAttempt, currentLetter, currentWord, wordAttempt]);
 
   return (
-    <div className='keyboard'>
-      {
-        arrayKeyboard.map((row, rowIndex) => (
-          <div key={`row-${rowIndex}`} className="keyboard-row">
-            {
-              row.map((key) => (
-                <button key={key} className={`cell-keyboard ${key === 'Enter' || key === '⌫' ? 'cell-keyboard--special' : ''}`} onClick={() => handleClickKey(key)} id={key}>
-                  {key}
-                </button>
-              ))
-            }
-          </div>
-        ))
-      }
+    <div className="keyboard">
+      {arrayKeyboard.map((row, rowIndex) => (
+        <div key={`row-${rowIndex}`} className="keyboard-row">
+          {row.map((key) => (
+            <button
+              key={key}
+              className={`cell-keyboard ${
+                key === "Enter" || key === "⌫" ? "cell-keyboard--special" : ""
+              }`}
+              onClick={() =>
+                clickLetter({
+                  key,
+                  dispatch,
+                  currentAttempt,
+                  currentLetter,
+                  currentWord,
+                  wordAttempt,
+                  modifyIsEnd,
+                  modifyIsWin,
+                })
+              }
+              id={key}
+            >
+              {key}
+            </button>
+          ))}
+        </div>
+      ))}
     </div>
-  )
-}
+  );
+};
